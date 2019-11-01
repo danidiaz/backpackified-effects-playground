@@ -4,7 +4,7 @@
 {-# LANGUAGE DataKinds #-}
 {-# LANGUAGE TypeOperators #-}
 
-module Program.Monadtastic (Sig,M) where
+module Program.Monadtastic (Sig,M,runBoondogle) where
 
 import Control.Monad
 import Control.Effect

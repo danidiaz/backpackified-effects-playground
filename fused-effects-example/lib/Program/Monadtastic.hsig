@@ -1,0 +1,21 @@
+﻿{-# LANGUAGE KindSignatures #-}
+{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+signature Program.Monadtastic (Sig,M) where
+
+import Data.Kind
+import Control.Monad
+import Control.Effect
+import Control.Effect.State
+import Control.Effect.Reader
+import Control.Effect.Writer
+
+data Sig :: (Type -> Type) -> Type -> Type   
+instance Member (State Int) Sig
+instance Member (Reader Bool)   Sig
+instance Member (Writer [String]) Sig
+
+data M :: Type -> Type
+instance Monad M
+
+instance Carrier Sig M

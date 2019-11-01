@@ -1,0 +1,42 @@
+name:                fused-effects-example
+version:             1.0.0.0
+license:             MIT
+license-file:        LICENSE
+category:            Control
+build-type:          Simple
+cabal-version:       >=2
+
+executable fused-effects-example
+    main-is:             Main.hs
+    build-depends:       
+        base             >=4.10 && <5,
+        program-logic,
+        program-monad
+    default-language:    Haskell2010
+    -- No need of mixin clause, because sig name and impl name already
+    -- coincide.
+
+-- This is the program logic, depending on an abtract monad.
+library program-logic
+  exposed-modules:     
+        Program
+  signatures:
+        Program.Monadtastic 
+  build-depends:
+        base             >= 4.10 && <5,
+        fused-effects    >= 0.5.0.1,
+        transformers     >= 0.5
+  hs-source-dirs:      lib
+  default-language:    Haskell2010
+
+-- This is the implementation package with a concrete monad stack.
+library program-monad
+  exposed-modules:     
+        Program.Monadtastic
+  build-depends:
+        base             >= 4.10 && <5,
+        fused-effects    >= 0.5.0.1,
+        transformers     >= 0.5
+  hs-source-dirs:      impl
+  default-language:    Haskell2010
+

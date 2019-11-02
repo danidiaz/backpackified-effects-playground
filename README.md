@@ -1,2 +1,2 @@
-# backpackized-effects-playground
+# backpackified-effects-playground
 effect libraries + backpack
